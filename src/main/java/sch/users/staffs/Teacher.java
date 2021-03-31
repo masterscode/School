@@ -1,10 +1,15 @@
 package sch.users.staffs;
 
-import sch.interfaces.IUser;
+import sch.academics.Course;
+import sch.interfaces.TeacherInterface;
 import sch.users.User;
 
-import java.util.List;
+public class Teacher extends Staff implements TeacherInterface {
 
-public class Teacher extends User  {
-
+    @Override
+    public void assignCourse(User user, Course course) {
+        if (user.getUserType().equals("teacher")) {
+            course.teacher = user;
+        }
+    }
 }

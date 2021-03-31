@@ -1,37 +1,20 @@
 package sch.users;
 
-import sch.interfaces.IUser;
+import sch.academics.Course;
+import sch.interfaces.StudentInterface;
 
-import java.util.List;
+public class Student implements StudentInterface {
 
-public class Student extends User implements IUser {
-    @Override
-    public boolean create() {
-        return false;
-    }
 
     @Override
-    public boolean update(int uid) {
-        return false;
-    }
-
-    @Override
-    public List<String> getAll() {
-        return null;
-    }
-
-    @Override
-    public boolean delete(int uid) {
-        return false;
-    }
-
-    @Override
-    public List<String> getUser(int uid) {
-        return null;
-    }
-
-    public boolean assignClass(int classUid){
-        return false;
+    public void takeCourse(User student, Course course) {
+        try {
+            if (student.userType.equals("student")) {
+                student.courses.add(course);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }

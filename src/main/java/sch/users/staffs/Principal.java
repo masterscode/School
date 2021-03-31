@@ -1,33 +1,25 @@
 package sch.users.staffs;
 
-import sch.interfaces.IUser;
+import sch.interfaces.PrincipalInterface;
+import sch.users.Student;
 import sch.users.User;
+import store.UserStore;
 
 import java.util.List;
 
-public class Principal extends User implements IUser {
+public class Principal implements PrincipalInterface {
+
     @Override
-    public boolean create() {
-        return false;
+    public void expelStudent(User principal, User student) {
+        if (principal.getUserType().equals("principal") && student.getUserType().equals("student")) {
+            principal.removeUser(student);
+        }
     }
 
     @Override
-    public boolean update(int uid) {
-        return false;
-    }
-
-    @Override
-    public List<String> getAll() {
-        return null;
-    }
-
-    @Override
-    public boolean delete(int uid) {
-        return false;
-    }
-
-    @Override
-    public List<String> getUser(int uid) {
-        return null;
+    public void admitStudent(User principal, User student) {
+        if (principal.getUserType().equals("principal") && student.getUserType().equals("student")) {
+            User.addUser(student);
+        }
     }
 }

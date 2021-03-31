@@ -1,6 +1,8 @@
 package sch.users;
 
 
+import sch.academics.Course;
+
 import javax.naming.directory.InvalidAttributeValueException;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -12,19 +14,33 @@ import java.util.HashMap;
  * @author Ogbinaka Emmanuel
  */
 
-
 public class User {
-    protected String firstName,
-            lastName, gender, email;
+
+    private static final ArrayList<User> users = new ArrayList<>();
     protected HashMap<String, String> address = new HashMap<String, String>();
     protected int gsm;
     protected HashMap<String, Integer> dateOfBirth = new HashMap<String, Integer>();
-    protected  HashMap<String, String> userType = new HashMap<String, String>();
+    protected HashMap<String, String> userType = new HashMap<String, String>();
+    protected String firstName, lastName, gender, email;
+    public ArrayList<Course> courses = new ArrayList<>();
+    private String USER_TYPE;
 
-    /**
-     * userStore will act as a conceptual store
-     */
-    protected HashMap<String, ArrayList<User>> userStore = new HashMap<String, ArrayList<User>>();
+    public User(String firstName, String lastName, String gender, String email, int gsm, String USER_TYPE) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.email = email;
+        this.gsm = gsm;
+        this.USER_TYPE = USER_TYPE;
+    }
+
+    public static void addUser(User student) {
+        users.add(student);
+    }
+
+    public void removeUser(User student) {
+        users.remove(student);
+    }
 
     protected int getAge() {
         try {
@@ -51,20 +67,27 @@ public class User {
         this.address.put("state", state);
         this.address.put("country", country);
     }
-    protected String getUSerType(String key){
+
+    protected void setUSerType(String key) {
         this.userType.put("principal", "Principal");
         this.userType.put("student", "Student");
         this.userType.put("teacher", "Teacher");
         this.userType.put("nonAcademic", "Non Academic");
         try {
-            if(!this.userType.containsKey(key)){
+            if (!this.userType.containsKey(key)) {
                 throw new NullPointerException();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return this.userType.get(key);
+        this.USER_TYPE = this.userType.get(key);
+//        return this.userType.get(key);
     }
+
+    public String getUserType() {
+        return this.USER_TYPE;
+    }
+
     protected void setDateOfBirth(int day, int month, int year) {
         this.dateOfBirth.put("day", day);
         this.dateOfBirth.put("month", month);
@@ -85,14 +108,14 @@ public class User {
 
     public String getFullName() {
         try {
-            if (this.firstName.equals("") ||  this.lastName.equals("")) {
+            if (this.firstName.equals("") || this.lastName.equals("")) {
                 throw new NullPointerException();
             }
+            return "";
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return String.format("%s %s", this.firstName, this.lastName);
     }
-
 
 }
