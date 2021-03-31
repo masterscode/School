@@ -1,5 +1,6 @@
-#School
-##Problem Description
+# School
+
+## Problem Description
 You are to model a department using an object oriented programming (OOP) paradigm. A basic school is made up of the following.
 
 ● Staffs
@@ -28,7 +29,7 @@ Each of these players have various functions/actions which they can perform
 
 ● A principal can admit applicants based on age.
 
-###How will I complete this project?
+### How will I complete this project?
 
 1. Organise the folders for your module (application), to house both your code base and the tests.
 
@@ -36,7 +37,7 @@ Each of these players have various functions/actions which they can perform
 
 3. Make logical assumptions where necessary.
 
-####Steps to evaluate.
+#### Steps to evaluate.
 
 1. Code
 
