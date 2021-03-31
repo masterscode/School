@@ -22,7 +22,7 @@ public class User {
     protected HashMap<String, Integer> dateOfBirth = new HashMap<String, Integer>();
     protected HashMap<String, String> userType = new HashMap<String, String>();
     protected String firstName, lastName, gender, email;
-    public ArrayList<Course> courses = new ArrayList<>();
+    protected ArrayList<Course> courses = new ArrayList<Course>();
     private String USER_TYPE;
 
     public User(String firstName, String lastName, String gender, String email, int gsm, String USER_TYPE) {

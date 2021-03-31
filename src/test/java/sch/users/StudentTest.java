@@ -20,10 +20,10 @@ class StudentTest {
     }
 
     @Test
-    @DisplayName("this method should add one course to the collections of courses")
+    @DisplayName("This method should add one course to the collections of courses")
     void takeCourse() {
         studentActions.takeCourse(student, course);
-        int actual  = student.courses.size();
+        int actual  =studentActions.getCourses(student).size();
         int expected = 1;
         Assertions.assertEquals(expected, actual);
 
