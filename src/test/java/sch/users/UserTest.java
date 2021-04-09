@@ -10,7 +10,7 @@ class UserTest {
     User user;
     @BeforeEach
      void init() {
-//        this.user = new User();
+       this.user = new User();
     }
 
     @Test
